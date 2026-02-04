@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScribbleUs - Timeline</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        romantic: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            300: '#fda4af',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                            700: '#be123c',
+                            800: '#9f1239',
+                            900: '#881337',
+                        }
+                    },
+                    fontFamily: {
+                        gloria: ['"Gloria Hallelujah"', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="antialiased min-h-screen">
+    
+    <div id="header-container"></div>
+
+    <main class="min-h-screen pt-24 pb-12 px-4 relative">
+        <div id="decorations-container"></div>
+
+        <div class="container mx-auto max-w-6xl relative z-10">
+            <!-- Header -->
+            <div class="text-center mb-12">
+                <div class="heart-glow inline-block mb-4">
+                    <i data-lucide="calendar" class="w-12 h-12 md:w-16 md:h-16 text-romantic-500"></i>
+                </div>
+                <h1 class="text-3xl md:text-6xl font-bold text-romantic-700 mb-4">
+                    Our Story Timeline
+                </h1>
+                <p class="text-xl text-romantic-600">
+                    Every moment of your journey together
+                </p>
+            </div>
+
+            <!-- Add Milestone Button -->
+            <div class="flex justify-center mb-8">
+                <button id="add-btn" class="btn-romantic text-xl px-8 py-4 flex items-center gap-2">
+                    <i data-lucide="plus" class="w-5 h-5"></i>
+                    Add Milestone
+                </button>
+            </div>
+
+            <!-- Add Form (Hidden by default) -->
+            <div id="add-form" class="hidden mb-12">
+                <div class="sketchy-card p-6 max-w-2xl mx-auto bg-white relative">
+                    <button id="close-form" class="absolute top-4 right-4 text-gray-500 hover:text-red-500">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+                    <h2 class="text-2xl font-bold text-romantic-800 mb-6">New Memory</h2>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Title</label>
+                            <input type="text" id="new-title" class="w-full p-2 border-2 border-romantic-200 rounded-lg focus:border-romantic-500 outline-none" placeholder="e.g., First Date">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Date</label>
+                            <input type="date" id="new-date" class="w-full p-2 border-2 border-romantic-200 rounded-lg focus:border-romantic-500 outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Description</label>
+                            <div class="flex gap-2">
+                                <textarea id="new-description" rows="3" class="w-full p-2 border-2 border-romantic-200 rounded-lg focus:border-romantic-500 outline-none" placeholder="What happened?"></textarea>
+                                <button id="ai-generate-btn" class="bg-romantic-100 p-2 rounded-lg text-romantic-600 hover:bg-romantic-200" title="Generate with AI">
+                                    <i data-lucide="sparkles" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Emoji</label>
+                            <div class="flex flex-wrap gap-2" id="emoji-selector">
+                                <!-- Emojis injected via JS -->
+                            </div>
+                        </div>
+
+                        <button id="save-milestone" class="btn-romantic w-full mt-4">Save Memory</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="relative max-w-4xl mx-auto">
+                <!-- Center Line -->
+                <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-romantic-300 transform -translate-x-1/2"></div>
+
+                <div id="timeline-items" class="space-y-12">
+                    <!-- Items injected via JS -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/dummyData.js"></script>
+    <script src="js/store.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/timeline.js"></script>
+</body>
+</html>

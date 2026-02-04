@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScribbleUs - Cards</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        romantic: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            300: '#fda4af',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                            700: '#be123c',
+                            800: '#9f1239',
+                            900: '#881337',
+                        }
+                    },
+                    fontFamily: {
+                        gloria: ['"Gloria Hallelujah"', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="antialiased min-h-screen">
+    
+    <div id="header-container"></div>
+
+    <main class="min-h-screen pt-24 pb-12 px-4 relative overflow-x-hidden">
+        <div id="decorations-container"></div>
+
+        <div class="container mx-auto max-w-6xl relative z-10">
+            <!-- Header -->
+            <div class="text-center mb-12">
+                <div class="heart-glow inline-block mb-4">
+                    <i data-lucide="message-circle-heart" class="w-12 h-12 md:w-16 md:h-16 text-romantic-500"></i>
+                </div>
+                <h1 class="text-3xl md:text-6xl font-bold text-romantic-700 mb-4">
+                    Digital Card Creator
+                </h1>
+                <p class="text-xl text-romantic-600">
+                    Perfect cards for every special moment
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Template Selection -->
+                <div class="sketchy-card p-5 md:p-8 space-y-6">
+                    <h2 class="text-2xl md:text-3xl font-bold text-romantic-800">Choose a Template</h2>
+
+                    <div class="grid grid-cols-2 gap-4" id="template-grid">
+                        <!-- Injected via JS -->
+                    </div>
+
+                    <div class="space-y-4 pt-4 border-t-2 border-romantic-100">
+                        <h3 class="text-xl font-bold text-romantic-700">Customize</h3>
+                        
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Recipient Name</label>
+                            <input type="text" id="recipient-name" class="w-full p-2 border-2 border-romantic-200 rounded-lg focus:border-romantic-500 outline-none" placeholder="Who is this for?">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Custom Message (Optional)</label>
+                            <textarea id="custom-message" rows="3" class="w-full p-2 border-2 border-romantic-200 rounded-lg focus:border-romantic-500 outline-none" placeholder="Add a personal note..."></textarea>
+                        </div>
+
+                        <button id="generate-btn" class="btn-romantic w-full flex justify-center items-center gap-2">
+                            <i data-lucide="sparkles" class="w-5 h-5"></i>
+                            Generate Card
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Preview Area -->
+                <div class="relative">
+                     <div id="card-preview" class="relative w-full aspect-[3/4] sketchy-card cursor-pointer group overflow-hidden bg-white">
+                        
+                        <!-- Card Front -->
+                        <div id="card-front" class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-white z-10 transition-opacity duration-500">
+                            <div class="text-6xl mb-6 animate-bounce" id="card-emoji">🎂</div>
+                            <h2 class="text-4xl font-bold text-romantic-600 mb-4 font-handwriting" id="card-front-text">Happy Birthday!</h2>
+                            <p class="text-gray-400 text-sm mt-8 animate-pulse font-bold text-romantic-400">Tap to Open</p>
+                        </div>
+
+                        <!-- Card Inside -->
+                        <div id="card-inside" class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-white opacity-0 pointer-events-none transition-opacity duration-500 z-0">
+                            <div class="relative border-4 border-double border-romantic-200 p-6 h-full w-full flex flex-col items-center justify-center bg-romantic-50/30 rounded-xl overflow-hidden">
+                                <!-- Decorations -->
+                                <div class="absolute top-3 left-3 text-romantic-300/50 transform -rotate-12">
+                                    <i data-lucide="heart" class="w-8 h-8 fill-current"></i>
+                                </div>
+                                <div class="absolute top-3 right-3 text-romantic-300/50 transform rotate-12">
+                                    <i data-lucide="sparkles" class="w-8 h-8"></i>
+                                </div>
+                                <div class="absolute bottom-3 left-3 text-romantic-300/50 transform rotate-12">
+                                    <i data-lucide="sparkles" class="w-8 h-8"></i>
+                                </div>
+                                <div class="absolute bottom-3 right-3 text-romantic-300/50 transform -rotate-12">
+                                    <i data-lucide="heart" class="w-8 h-8 fill-current"></i>
+                                </div>
+                                
+                                <p class="text-2xl leading-relaxed text-gray-800 font-handwriting whitespace-pre-wrap relative z-10" id="card-inside-text">
+                                    Dear Love,
+                                    
+                                    Wishing you the most amazing day filled with joy and laughter.
+                                    
+                                    With love ❤️
+                                </p>
+                                <p class="text-gray-400 text-xs mt-4 animate-pulse font-bold text-romantic-400">Tap to Close</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <!-- Shadow/Decor -->
+                    <div class="absolute -bottom-4 -right-4 w-full h-full bg-romantic-800/10 rounded-[15px_225px_15px_255px] -z-10 pointer-events-none transform rotate-1"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="js/dummyData.js"></script>
+    <script src="js/store.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/ai-service.js"></script>
+    <script src="js/cards.js"></script>
+</body>
+</html>

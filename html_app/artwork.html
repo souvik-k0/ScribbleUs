@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScribbleUs - Artwork</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        romantic: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            300: '#fda4af',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                            700: '#be123c',
+                            800: '#9f1239',
+                            900: '#881337',
+                        }
+                    },
+                    fontFamily: {
+                        gloria: ['"Gloria Hallelujah"', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="antialiased min-h-screen">
+    
+    <div id="header-container"></div>
+
+    <main class="min-h-screen pt-24 pb-12 px-4 relative">
+        <div id="decorations-container"></div>
+
+        <div class="container mx-auto max-w-6xl relative z-10">
+            <!-- Header -->
+            <div class="text-center mb-12">
+                <div class="heart-glow inline-block mb-4">
+                    <i data-lucide="image" class="w-12 h-12 md:w-16 md:h-16 text-romantic-500"></i>
+                </div>
+                <h1 class="text-3xl md:text-6xl font-bold text-romantic-700 mb-4">
+                    Artwork Transformation
+                </h1>
+                <p class="text-xl text-romantic-600">
+                    Turn your photos into artistic masterpieces
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Style Selection -->
+                <div class="sketchy-card p-5 md:p-8 space-y-6">
+                    <h2 class="text-2xl md:text-3xl font-bold text-romantic-800 flex items-center gap-2">
+                        <i data-lucide="wand-2" class="w-8 h-8"></i>
+                        Choose Art Style
+                    </h2>
+
+                    <div class="grid grid-cols-2 gap-4" id="style-grid">
+                        <!-- Injected via JS -->
+                    </div>
+
+                    <div class="space-y-4">
+                        <p class="text-gray-700">
+                            <strong class="text-romantic-800">Current Style:</strong> <span id="current-style-name">Watercolor</span>
+                        </p>
+                        <p class="text-sm text-gray-600">
+                            In a real app, you could upload your own photos. For this prototype, we're using a sample image with filter effects.
+                        </p>
+                        <button id="new-photo-btn" class="btn-romantic w-full">
+                            Load New Sample Photo
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Preview -->
+                <div class="sketchy-card p-5 md:p-8">
+                    <h2 class="text-2xl md:text-3xl font-bold text-romantic-800 mb-6">
+                        Transformed Result
+                    </h2>
+
+                    <div class="space-y-6">
+                        <!-- Transformed Image -->
+                        <div class="relative w-full aspect-square rounded-xl overflow-hidden shadow-inner border-4 border-white bg-gray-100">
+                            <img id="preview-image" src="https://picsum.photos/seed/artwork/600/600" alt="Artistic transformation" class="w-full h-full object-cover transition-all duration-500">
+                            
+                            <!-- Loading Overlay -->
+                            <div id="loading-overlay" class="absolute inset-0 bg-white/80 flex items-center justify-center opacity-0 pointer-events-none transition-opacity">
+                                <div class="animate-spin rounded-full h-12 w-12 border-4 border-romantic-500 border-t-transparent"></div>
+                            </div>
+                        </div>
+
+                        <!-- AI Caption Section -->
+                        <div class="text-center space-y-3">
+                            <div id="ai-caption-result" class="hidden text-lg font-handwriting text-romantic-800 italic p-4 bg-romantic-50 rounded-lg border border-romantic-200"></div>
+                            <button id="ai-caption-btn" class="text-sm font-bold text-romantic-600 hover:text-romantic-800 flex items-center justify-center gap-2 mx-auto transition-colors">
+                                <i data-lucide="sparkles" class="w-4 h-4"></i>
+                                Generate Artistic Caption with AI
+                            </button>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <button class="flex-1 py-3 px-4 rounded-xl border-2 border-romantic-200 text-romantic-700 font-bold hover:bg-romantic-50 transition-colors flex justify-center items-center gap-2" onclick="alert('Share feature coming soon!')">
+                                <i data-lucide="share-2" class="w-4 h-4"></i>
+                                Share
+                            </button>
+                            <button class="flex-1 btn-romantic flex justify-center items-center gap-2" onclick="alert('Image saved!')">
+                                <i data-lucide="download" class="w-4 h-4"></i>
+                                Download
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/dummyData.js"></script>
+    <script src="js/store.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/ai-service.js"></script>
+    <script src="js/artwork.js"></script>
+</body>
+</html>

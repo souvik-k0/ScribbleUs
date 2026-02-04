@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+
+:root {
+  --background: #fffaf0;
+  --foreground: #3d1e1e;
+
+  /* Romantic Red Color Palette */
+  --romantic-50: #fff1f2;
+  --romantic-100: #ffe4e6;
+  --romantic-200: #fecdd3;
+  --romantic-300: #fda4af;
+  --romantic-400: #fb7185;
+  --romantic-500: #f43f5e;
+  --romantic-600: #e11d48;
+  --romantic-700: #be123c;
+  --romantic-800: #9f1239;
+  --romantic-900: #881337;
+}
+
+body {
+  color: var(--foreground);
+  background-color: var(--background);
+  font-family: 'Gloria Hallelujah', cursive;
+
+  /* More visible romantic Math Notebook Pattern */
+  background-image:
+    linear-gradient(rgba(251, 113, 133, 0.25) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(251, 113, 133, 0.25) 2px, transparent 2px);
+  background-size: 24px 24px;
+}
+
+/* The "Sketchy" Look utility with BOLD romantic red accents */
+.sketchy-card {
+  border: 3px solid #881337;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 6px 6px 0px 0px rgba(136, 19, 55, 0.9);
+  background-color: white;
+  transition: all 0.2s ease-in-out;
+}
+
+.sketchy-card:hover {
+  box-shadow: 8px 8px 0px 0px rgba(136, 19, 55, 1);
+  transform: translateY(-2px);
+}
+
+/* Romantic button variants */
+.btn-romantic {
+  background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+  color: white;
+  border: 2px solid #be123c;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 4px 4px 0px 0px rgba(190, 18, 60, 0.8);
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-romantic:hover {
+  background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+  box-shadow: 6px 6px 0px 0px rgba(190, 18, 60, 1);
+  transform: translateY(-2px);
+}
+
+.btn-romantic:active {
+  transform: translateY(0);
+  box-shadow: 2px 2px 0px 0px rgba(190, 18, 60, 1);
+}
+
+.btn-romantic:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Romantic gradient backgrounds */
+.gradient-romantic {
+  background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 50%, #fecdd3 100%);
+}
+
+.gradient-sunset {
+  background: linear-gradient(135deg, #fda4af 0%, #fb7185 50%, #f43f5e 100%);
+}
+
+/* Custom scrollbar with romantic theme */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff1f2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #fb7185, #e11d48);
+  border-radius: 6px;
+  border: 2px solid #fff1f2;
+}
+
+/* Animations */
+@keyframes bounce-in {
+    0% { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }
+    50% { transform: translate(-50%, -50%) scale(1.05); opacity: 1; }
+    70% { transform: translate(-50%, -50%) scale(0.9); }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+.animate-bounce-in {
+    animation: bounce-in 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+/* Heart Glow Effect */
+.heart-glow {
+    filter: drop-shadow(0 0 10px rgba(244, 63, 94, 0.5));
+}
